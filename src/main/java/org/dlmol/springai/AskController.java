@@ -32,7 +32,7 @@ public class AskController {
 
     @PostMapping("/rulesAsk")
     public Answer askRules(@RequestParam String question) {
-        if (question == null || StringUtils.isBlank(question)) {
+        if (StringUtils.isBlank(question)) {
             final String missingQuestionMsg = "Question is missing!";
             logger.debug(missingQuestionMsg);
             return new Answer(missingQuestionMsg);
@@ -53,7 +53,7 @@ public class AskController {
 
     @PostMapping("/ask")
     public Answer ask(@RequestParam String question) {
-        if (question == null || StringUtils.isBlank(question)) {
+        if (StringUtils.isBlank(question)) {
             final String missingQuestionMsg = "Question is missing!";
             logger.debug(missingQuestionMsg);
             return new Answer(missingQuestionMsg);
