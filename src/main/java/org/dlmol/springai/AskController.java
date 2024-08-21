@@ -58,12 +58,11 @@ public class AskController {
             logger.debug(missingQuestionMsg);
             return new Answer(missingQuestionMsg);
         }
-        final String questionText = question;
         final Answer answer = chatClient.prompt()
-                .user(questionText)
+                .user(question)
                 .call()
                 .entity(Answer.class);
-        logger.debug("For question \"{}\", answer: \"{}\"", questionText, answer.answer());
+        logger.debug("For question \"{}\", answer: \"{}\"", question, answer.answer());
         return answer;
     }
 }
