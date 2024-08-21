@@ -52,15 +52,12 @@ public class AskController {
     }
 
     @PostMapping("/ask")
-//    public Answer ask(@RequestBody Question question) {
     public Answer ask(@RequestParam String question) {
-//        if (question == null || StringUtils.isBlank(question.question())) {
         if (question == null || StringUtils.isBlank(question)) {
             final String missingQuestionMsg = "Question is missing!";
             logger.debug(missingQuestionMsg);
             return new Answer(missingQuestionMsg);
         }
-//        final String questionText = question.question();
         final String questionText = question;
         final Answer answer = chatClient.prompt()
                 .user(questionText)
